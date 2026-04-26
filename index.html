@@ -3,41 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>GameFix Arabia</title>
 
 <style>
+html {scroll-behavior:smooth;}
+
 body{
 margin:0;
 font-family:Tahoma;
-background:#0f172a;
+background:#020617;
 color:#fff;
+overflow-x:hidden;
 }
 
+/* 🌌 خلفية متحركة */
+.background{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+background:linear-gradient(270deg,#0ea5e9,#9333ea,#020617);
+background-size:600% 600%;
+animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* 🔥 NAV */
 nav{
-background:#111827;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
 padding:15px;
+position:sticky;
+top:0;
 text-align:center;
+z-index:1000;
 }
 
 nav a{
-color:#0ea5e9;
+color:#38bdf8;
 margin:10px;
 text-decoration:none;
 font-weight:bold;
+transition:0.3s;
 }
 
-.container{
-padding:20px;
+nav a:hover{
+color:#fff;
+}
+
+/* 🧱 أقسام */
+section{
+padding:80px 20px;
 text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:0.8s;
 }
 
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* 💎 كروت */
 .card{
-background:#111827;
-padding:15px;
-margin:15px auto;
-width:80%;
-border-radius:10px;
+background:rgba(17,24,39,0.8);
+padding:20px;
+margin:20px auto;
+width:85%;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(56,189,248,0.6);
+}
+
+/* 🎮 HERO */
+.hero{
+padding:120px 20px;
+}
+
+.hero h1{
+font-size:42px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #0ea5e9;}
+to{ text-shadow:0 0 30px #38bdf8;}
+}
+
+/* 📱 */
+@media(max-width:768px){
+.hero h1{font-size:28px;}
+.card{width:95%;}
 }
 </style>
 
@@ -45,35 +112,232 @@ border-radius:10px;
 
 <body>
 
+<div class="background"></div>
+
 <nav>
-<a href="index.html">الرئيسية</a>
-<a href="fps.html">FPS</a>
-<a href="settings.html">الإعدادات</a>
-<a href="problems.html">المشاكل</a>
-<a href="contact.html">تواصل</a>
+<a href="#home">الرئيسية</a>
+<a href="#fps">FPS</a>
+<a href="#settings">الإعدادات</a>
+<a href="#problems">المشاكل</a>
+<a href="#contact">تواصل</a>
 </nav>
 
-<div class="container">
-
+<section id="home" class="hero">
 <h1>🎮 GameFix Arabia</h1>
 <p>حلول الألعاب + رفع FPS + إعدادات احترافية</p>
+</section>
 
+<section id="fps">
+<h1>⚡ تحسين FPS</h1>
 <div class="card">
-<h2>⚡ تحسين الأداء</h2>
-<p>رفع FPS وحل التقطيع بسهولة</p>
+<p>✔ إغلاق البرامج ✔ تحديث التعريفات ✔ تقليل الجرافيكس ✔ Fullscreen</p>
 </div>
+</section>
 
+<section id="settings">
+<h1>🎯 الإعدادات</h1>
 <div class="card">
-<h2>🎯 إعدادات احترافية</h2>
-<p>أفضل إعدادات للألعاب المشهورة</p>
+<p>✔ Motion Blur Off ✔ Shadows Low ✔ FOV High ✔ Sensitivity Medium</p>
 </div>
+</section>
 
+<section id="problems">
+<h1>⚠️ حل المشاكل</h1>
 <div class="card">
-<h2>⚠️ حل المشاكل</h2>
-<p>حل الكراش واللاق والتقطيع</p>
+<p>✔ الكراش ✔ اللاق ✔ التقطيع</p>
 </div>
+</section>
 
+<section id="contact">
+<h1>📞 تواصل</h1>
+<div class="card">
+<p>راسلنا لأي مشكلة</p>
 </div>
+</section>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+sections.forEach(sec => {
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+sec.classList.add("show");
+}
+});
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameFix Arabia</title>
+
+<style>
+html {scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:Tahoma;
+background:#020617;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* 🌌 خلفية متحركة */
+.background{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+background:linear-gradient(270deg,#0ea5e9,#9333ea,#020617);
+background-size:600% 600%;
+animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* 🔥 NAV */
+nav{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:15px;
+position:sticky;
+top:0;
+text-align:center;
+z-index:1000;
+}
+
+nav a{
+color:#38bdf8;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#fff;
+}
+
+/* 🧱 أقسام */
+section{
+padding:80px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:0.8s;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* 💎 كروت */
+.card{
+background:rgba(17,24,39,0.8);
+padding:20px;
+margin:20px auto;
+width:85%;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(56,189,248,0.6);
+}
+
+/* 🎮 HERO */
+.hero{
+padding:120px 20px;
+}
+
+.hero h1{
+font-size:42px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #0ea5e9;}
+to{ text-shadow:0 0 30px #38bdf8;}
+}
+
+/* 📱 */
+@media(max-width:768px){
+.hero h1{font-size:28px;}
+.card{width:95%;}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#fps">FPS</a>
+<a href="#settings">الإعدادات</a>
+<a href="#problems">المشاكل</a>
+<a href="#contact">تواصل</a>
+</nav>
+
+<section id="home" class="hero">
+<h1>🎮 GameFix Arabia</h1>
+<p>حلول الألعاب + رفع FPS + إعدادات احترافية</p>
+</section>
+
+<section id="fps">
+<h1>⚡ تحسين FPS</h1>
+<div class="card">
+<p>✔ إغلاق البرامج ✔ تحديث التعريفات ✔ تقليل الجرافيكس ✔ Fullscreen</p>
+</div>
+</section>
+
+<section id="settings">
+<h1>🎯 الإعدادات</h1>
+<div class="card">
+<p>✔ Motion Blur Off ✔ Shadows Low ✔ FOV High ✔ Sensitivity Medium</p>
+</div>
+</section>
+
+<section id="problems">
+<h1>⚠️ حل المشاكل</h1>
+<div class="card">
+<p>✔ الكراش ✔ اللاق ✔ التقطيع</p>
+</div>
+</section>
+
+<section id="contact">
+<h1>📞 تواصل</h1>
+<div class="card">
+<p>راسلنا لأي مشكلة</p>
+</div>
+</section>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+sections.forEach(sec => {
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+sec.classList.add("show");
+}
+});
+});
+</script>
 
 </body>
 </html>
